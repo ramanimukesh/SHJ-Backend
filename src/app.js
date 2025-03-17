@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:'https://varni-frontend.onrender.com',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
