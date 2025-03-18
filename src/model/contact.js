@@ -46,7 +46,7 @@ const contactSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Message is required'],
     }
-});
+}, { timestamps: true });
 
 const Contact = mongoose.model('Contact', contactSchema);
 
