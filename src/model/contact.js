@@ -30,7 +30,7 @@ const contactSchema = new mongoose.Schema({
     },
     media: {
         type: String,
-        enum: ['Social Media', 'Google', 'Referral', 'Magazine'], // Example options
+        enum: ['Social Media', 'Google', 'Referral', 'Magazine',  'Others'], // Example options
         required: [true, 'selection is required'],
     },
 

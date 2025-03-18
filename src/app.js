@@ -10,7 +10,7 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
-
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 const contactRoter = require("./router/contactRouter");
