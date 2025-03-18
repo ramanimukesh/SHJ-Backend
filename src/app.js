@@ -4,11 +4,13 @@ const port = process.env.PORT || 5000
 const app = express();
 const cors = require('cors');
 
-const corsOptions ={
-    origin:'https://varni-frontend.onrender.com',
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+const corsOptions = {
+    origin: ['https://varni-frontend.onrender.com', 'https://www.swaminarayanconstruction.com'],
+    credentials: true,  // Allows cookies and credentials
+    optionsSuccessStatus: 200
+};
+
+
 app.use(cors(corsOptions));
 
 const contactRoter = require("./router/contactRouter");
