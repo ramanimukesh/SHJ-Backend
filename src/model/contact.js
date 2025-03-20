@@ -48,7 +48,37 @@ const contactSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+
+const vendorSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Name is required'],
+    },
+    company: {
+        type: String,
+        required: [true, 'Company name is required'],
+    },
+    address: {
+        type: String,
+        required: [true, 'Address is required'],
+    },
+    phone: {
+        type: String,
+        required: [true, 'Phone is required'],
+    },
+    service: {
+        type: String,
+        enum: ['Plumber', 'Electrician', 'Tiling', 'Flooring', 'Roofing', 'Drywall', 'Paint', 'Trim Work', 'Other'], 
+        required: [true, 'selection is required'],
+    },
+    message: {
+        type: String,
+        required: [true, 'Message is required'],
+    }
+});
+
+
 const Contact = mongoose.model('Contact', contactSchema);
+const Vendor = mongoose.model('Vendor', vendorSchema);
 
-module.exports = Contact;
-
+module.exports = {Contact, Vendor};

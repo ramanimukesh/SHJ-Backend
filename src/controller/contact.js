@@ -1,4 +1,5 @@
-const Contact = require("../model/contact");
+const { Contact, Vendor } = require("../model/contact");
+
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
@@ -76,4 +77,61 @@ const getContact = async (req, res) => {
   }
 };
 
-module.exports = { userContact, getContact };
+const userVendor = async (req, res) => {
+  try {
+    console.log("Received Vendor Request:", req.body);
+
+    const vendor = new Vendor({
+      name: req.body.name,
+      company: req.body.company,
+      address: req.body.address,
+      phone: req.body.phone,
+      service: req.body.service,
+      message: req.body.message,
+    });
+
+    const vendorData = await vendor.save();
+    console.log("Saved Vendor Data:", vendorData);
+
+    // Email content for vendor registration
+    const mailOptions = {
+      from: `"${req.body.name}" <${process.env.EMAIL_USER}>`,
+      to: "swaminarayanconstructionllc@gmail.com", // Replace with your company email
+      subject: "New Vendor Registration",
+      html: `
+        <h2>New Vendor Registration</h2>
+        <p><b>Name:</b> ${req.body.name}</p>
+        <p><b>Company:</b> ${req.body.company}</p>
+        <p><b>Address:</b> ${req.body.address}</p>
+        <p><b>Phone:</b> ${req.body.phone}</p>
+        <p><b>Service:</b> ${req.body.service}</p>
+        <p><b>Message:</b> ${req.body.message}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(201).json({
+      success: true,
+      data: vendorData,
+      message: "Vendor registration successful and email sent!",
+    });
+  } catch (error) {
+    console.error("Error registering vendor or sending email:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error", error });
+  }
+};
+
+const getVendor = async (req, res) => {
+  try {
+    const vendors = await Vendor.find();
+    res.status(200).json({ success: true, data: vendors });
+  } catch (error) {
+    console.error("Error fetching vendors:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error", error });
+  }
+};
+
+module.exports = { userContact, getContact, userVendor, getVendor };
+
+
