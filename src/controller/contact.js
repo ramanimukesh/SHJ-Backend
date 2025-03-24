@@ -83,11 +83,13 @@ const userVendor = async (req, res) => {
 
     const vendor = new Vendor({
       name: req.body.name,
-      company: req.body.company,
-      address: req.body.address,
+      lastname: req.body.lastname,
+      email: req.body.email,
       phone: req.body.phone,
-      service: req.body.service,
+      address: req.body.address,
       message: req.body.message,
+      service: req.body.service,
+      media: req.body.media,
     });
 
     const vendorData = await vendor.save();
@@ -100,11 +102,12 @@ const userVendor = async (req, res) => {
       subject: "New Vendor Registration",
       html: `
         <h2>New Vendor Registration</h2>
-        <p><b>Name:</b> ${req.body.name}</p>
-        <p><b>Company:</b> ${req.body.company}</p>
-        <p><b>Address:</b> ${req.body.address}</p>
+        <p><b>Name:</b> ${req.body.name} ${req.body.lastname}</p>
+        <p><b>Email:</b> ${req.body.email}</p>
         <p><b>Phone:</b> ${req.body.phone}</p>
+        <p><b>Address:</b> ${req.body.address}</p>
         <p><b>Service:</b> ${req.body.service}</p>
+        <p><b>Media Source:</b> ${req.body.media}</p>
         <p><b>Message:</b> ${req.body.message}</p>
       `,
     };
