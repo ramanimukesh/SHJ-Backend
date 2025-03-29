@@ -21,11 +21,6 @@ const userContact = async (req, res) => {
       lastname: req.body.lastname,
       email: req.body.email,
       phone: req.body.phone,
-      service: req.body.service,
-      project: req.body.project,
-      media: req.body.media,
-      zip: req.body.zip,
-      address: req.body.address,
       message: req.body.message,
     });
 
@@ -42,11 +37,6 @@ const userContact = async (req, res) => {
         <p><b>Name:</b> ${req.body.name} ${req.body.lastname}</p>
         <p><b>Email:</b> ${req.body.email}</p>
         <p><b>Phone:</b> ${req.body.phone}</p>
-        <p><b>Service:</b> ${req.body.service}</p>
-        <p><b>Project Timeline:</b> ${req.body.project}</p>
-        <p><b>Media Source:</b> ${req.body.media}</p>
-        <p><b>Address:</b> ${req.body.address}</p>
-        <p><b>Zip Code:</b> ${req.body.zip}</p>
         <p><b>Message:</b> ${req.body.message}</p>
       `,
     };
