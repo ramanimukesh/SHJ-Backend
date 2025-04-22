@@ -4,7 +4,5 @@ const {userContact, getContact, userVendor, getVendor} = require("../controller/
 
 router.post("/userContact", userContact);
 router.get("/getcontact", getContact);
-router.post("/userVendor", userVendor);
-router.get("/getvendor", getVendor)
 
 module.exports = router;
