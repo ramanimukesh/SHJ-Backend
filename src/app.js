@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 const corsOptions = {
-    origin: ['https://varni-frontend.onrender.com', 'https://www.swaminarayanconstruction.com', 'http://localhost:3000'],
+    origin: ['https://shj-frontend.onrender.com', 'https://www.swaminarayanconstruction.com', 'http://localhost:3000'],
     credentials: true,  // Allows cookies and credentials
     optionsSuccessStatus: 200
 };
