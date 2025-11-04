@@ -30,7 +30,7 @@ const userContact = async (req, res) => {
     // Email content with bold formatting
     const mailOptions = {
       from: `"${req.body.name} ${req.body.lastname}" <${req.body.email}>`,
-      to: "ramani.mukesh@gmail.com", // Replace with your company's email
+      to: "contact@sahajanandtechnologies.com", // Replace with your company's email
       subject: "New Contact Form Submission",
       html: `
         <h2>New Contact Form Submission</h2>
